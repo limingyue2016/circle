@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/code
+    docker:
+      - image: circleci/android:api-30-alpha
+    steps:
+      - checkout
+      - run:
+          name: Build Tests
+          command: ./gradlew assembleRelease
+      post:
+        - cp -r app/build/outputs $CIRCLE_ARTIFACTS
