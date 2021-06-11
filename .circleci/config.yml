@@ -18,8 +18,6 @@ workflows:
                 path: app/build/outputs/apk/
                 destination: apks/
       - publish-github-release:
-          requires:
-            - build
           docker:
             - image: circleci/golang:1.8
           steps:
